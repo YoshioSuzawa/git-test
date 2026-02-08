@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Gitの使い方ガイド</title>
+    <style>
+      :root {
+        color-scheme: light;
+        --bg: #ffffff;
+        --fg: #1f2937;
+        --muted: #6b7280;
+        --accent: #2563eb;
+        --card: #f8fafc;
+        --border: #e5e7eb;
+        --code: #0f172a;
+        --code-bg: #f1f5f9;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+        font-family: "Hiragino Kaku Gothic ProN", "Yu Gothic", "Meiryo", system-ui,
+          -apple-system, sans-serif;
+        color: var(--fg);
+        background: var(--bg);
+        line-height: 1.7;
+      }
+      header {
+        padding: 48px 20px 24px;
+        border-bottom: 1px solid var(--border);
+        background: linear-gradient(180deg, #eff6ff 0%, #ffffff 100%);
+      }
+      header h1 {
+        margin: 0 0 12px;
+        font-size: 32px;
+      }
+      header p {
+        margin: 0;
+        color: var(--muted);
+        max-width: 720px;
+      }
+      main {
+        max-width: 960px;
+        margin: 0 auto;
+        padding: 32px 20px 64px;
+      }
+      nav {
+        background: var(--card);
+        border: 1px solid var(--border);
+        border-radius: 12px;
+        padding: 16px 20px;
+        margin-bottom: 28px;
+      }
+      nav h2 {
+        font-size: 16px;
+        margin: 0 0 12px;
+        color: var(--muted);
+      }
+      nav ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 8px 16px;
+      }
+      nav a {
+        color: var(--accent);
+        text-decoration: none;
+      }
+      section {
+        padding: 24px 0;
+        border-bottom: 1px solid var(--border);
+      }
+      section:last-of-type {
+        border-bottom: none;
+      }
+      h2 {
+        margin-top: 0;
+        font-size: 24px;
+      }
+      h3 {
+        margin-top: 20px;
+        font-size: 18px;
+      }
+      .card {
+        background: var(--card);
+        border: 1px solid var(--border);
+        border-radius: 12px;
+        padding: 16px;
+        margin: 16px 0;
+      }
+      code,
+      pre {
+        font-family: "SFMono-Regular", "Consolas", "Menlo", monospace;
+      }
+      pre {
+        background: var(--code-bg);
+        color: var(--code);
+        padding: 12px 16px;
+        border-radius: 10px;
+        overflow-x: auto;
+      }
+      .two-col {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+        gap: 16px;
+      }
+      ul {
+        padding-left: 20px;
+      }
+      .note {
+        color: var(--muted);
+        font-size: 14px;
+      }
+      footer {
+        padding: 24px 20px 40px;
+        text-align: center;
+        color: var(--muted);
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>Gitの使い方ガイド</h1>
+      <p>
+        Gitはソースコードの変更履歴を管理する分散型バージョン管理システムです。
+        このページでは、インストールから日常的な開発フローまで、実務でよく使う
+        操作を短く整理しています。
+      </p>
+    </header>
+
+    <main>
+      <nav>
+        <h2>目次</h2>
+        <ul>
+          <li><a href="#about">Gitとは</a></li>
+          <li><a href="#install">インストールと初期設定</a></li>
+          <li><a href="#workflow">基本ワークフロー</a></li>
+          <li><a href="#commands">よく使うコマンド</a></li>
+          <li><a href="#branching">ブランチ運用</a></li>
+          <li><a href="#remote">リモート操作</a></li>
+          <li><a href="#history">履歴を整える</a></li>
+          <li><a href="#trouble">トラブル時の対処</a></li>
+        </ul>
+      </nav>
+
+      <section id="about">
+        <h2>Gitとは</h2>
+        <p>
+          Gitは変更履歴をスナップショットとして保存し、複数人での開発や巻き戻し、
+          変更の比較を簡単にします。ローカル環境に履歴を持つため、オフラインでも
+          作業可能です。
+        </p>
+        <div class="two-col">
+          <div class="card">
+            <h3>できること</h3>
+            <ul>
+              <li>変更履歴の記録と追跡</li>
+              <li>複数人での並行開発</li>
+              <li>差分比較とレビューの効率化</li>
+              <li>過去バージョンへの復元</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h3>よく出る用語</h3>
+            <ul>
+              <li><strong>リポジトリ</strong>: 履歴を保存する場所</li>
+              <li><strong>コミット</strong>: 変更のスナップショット</li>
+              <li><strong>ブランチ</strong>: 変更履歴の分岐</li>
+              <li><strong>リモート</strong>: 共有用のリポジトリ</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section id="install">
+        <h2>インストールと初期設定</h2>
+        <div class="card">
+          <h3>インストール</h3>
+          <p>OSに合わせて公式サイトからインストーラを入手します。</p>
+          <pre><code># macOS (Homebrew)
+brew install git
+
+# Ubuntu
+sudo apt-get update
+sudo apt-get install git</code></pre>
+        </div>
+        <div class="card">
+          <h3>ユーザー情報を登録</h3>
+          <pre><code>git config --global user.name "Taro Yamada"
+git config --global user.email "taro@example.com"</code></pre>
+          <p class="note">
+            この情報はコミットに記録されます。プロジェクトごとに上書きしたい場合は
+            --global を外します。
+          </p>
+        </div>
+      </section>
+
+      <section id="workflow">
+        <h2>基本ワークフロー</h2>
+        <p>
+          Gitの作業は「変更する → 変更をステージに載せる → コミットする」という
+          流れが基本です。
+        </p>
+        <div class="card">
+          <h3>最小フロー</h3>
+          <pre><code>git status           # 変更状態の確認
+git add .           # 変更をステージング
+git commit -m "説明を書く"  # 履歴に保存</code></pre>
+        </div>
+        <div class="card">
+          <h3>変更の確認</h3>
+          <pre><code>git diff            # ステージ前の差分
+git diff --staged   # ステージ済みの差分</code></pre>
+        </div>
+      </section>
+
+      <section id="commands">
+        <h2>よく使うコマンド</h2>
+        <div class="two-col">
+          <div class="card">
+            <h3>初期化・取得</h3>
+            <pre><code>git init                     # 新規リポジトリ作成
+git clone URL                # リポジトリの複製</code></pre>
+          </div>
+          <div class="card">
+            <h3>履歴を見る</h3>
+            <pre><code>git log --oneline --graph     # 1行で履歴を見る
+git show HEAD                 # 最新コミットの内容</code></pre>
+          </div>
+          <div class="card">
+            <h3>変更を戻す</h3>
+            <pre><code>git restore file.txt          # 作業中の変更を戻す
+git reset HEAD file.txt       # ステージ解除
+git revert COMMIT_HASH        # 安全に打ち消し</code></pre>
+          </div>
+          <div class="card">
+            <h3>一時退避</h3>
+            <pre><code>git stash push -m "作業中"
+git stash list
+git stash pop</code></pre>
+          </div>
+        </div>
+      </section>
+
+      <section id="branching">
+        <h2>ブランチ運用</h2>
+        <p>
+          ブランチを使うと、他の作業に影響を与えずに機能追加やバグ修正を進められます。
+        </p>
+        <div class="card">
+          <h3>ブランチの作成と移動</h3>
+          <pre><code>git branch                # ブランチ一覧
+git switch -c feature-x   # 新しいブランチ作成
+git switch main           # mainに戻る</code></pre>
+        </div>
+        <div class="card">
+          <h3>マージ</h3>
+          <pre><code>git switch main
+git merge feature-x       # feature-xをmainへ統合</code></pre>
+        </div>
+      </section>
+
+      <section id="remote">
+        <h2>リモート操作</h2>
+        <div class="card">
+          <h3>リモートの確認</h3>
+          <pre><code>git remote -v              # 登録済みリモート一覧</code></pre>
+        </div>
+        <div class="card">
+          <h3>取得と送信</h3>
+          <pre><code>git fetch origin           # リモートの情報を取得
+git pull origin main       # 取得して統合
+git push origin feature-x  # ブランチを共有</code></pre>
+          <p class="note">
+            共有リポジトリでは、push前にpullして最新状態を確認しましょう。
+          </p>
+        </div>
+      </section>
+
+      <section id="history">
+        <h2>履歴を整える</h2>
+        <div class="card">
+          <h3>リベースの基本</h3>
+          <pre><code>git switch feature-x
+git fetch origin
+git rebase origin/main</code></pre>
+          <p class="note">
+            公開済みのコミットをリベースする場合は、チームの運用ルールに従ってください。
+          </p>
+        </div>
+        <div class="card">
+          <h3>コミットのまとめ</h3>
+          <pre><code>git rebase -i HEAD~3   # 直近3件を整理</code></pre>
+        </div>
+      </section>
+
+      <section id="trouble">
+        <h2>トラブル時の対処</h2>
+        <div class="two-col">
+          <div class="card">
+            <h3>間違えてコミットした</h3>
+            <pre><code>git reset --soft HEAD~1  # 直前のコミットを取り消し</code></pre>
+            <p class="note">
+              作業内容は保持されます。共有済みの場合は revert を使いましょう。
+            </p>
+          </div>
+          <div class="card">
+            <h3>コンフリクトが起きた</h3>
+            <ul>
+              <li>該当ファイルを開いて競合箇所を修正</li>
+              <li>修正後に <code>git add</code></li>
+              <li><code>git commit</code> で解決を記録</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <p>このページはGitの基本操作をまとめたチートシートです。</p>
+    </footer>
+  </body>
+</html>
