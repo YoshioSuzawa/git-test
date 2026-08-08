@@ -122,7 +122,7 @@ AI が文書生成・データ加工・調査のために一時的または再�
 - 基準書: `004_Guideline/Japanese/Daily_Work_History_Standards.md`（旧 `Daily_Update_History_Standards.md` はポインタ）
 - 保存先: `008_Work_history/Japanese/` と `008_Work_history/Vietnamese/`（個人 `Work_History_YYYYMMDD_<更新者>.md`、全員マージ `Work_History_YYYYMMDD.md`）
 - 見本: 基準書内の記載例。旧形式は `008_Update_history/`（新規作成禁止）
-- 目的: 対象日・対象更新者の作業を抜け漏れなく表形式で一覧化し、全員分は対象コードでマージする（時系列日誌ではない）
+- 目的: 対象日・更新者の作業を抜け漏れなく、対象コード単位の表で一覧化する（時系列日誌ではない）。JP/VNは別ファイル
 - トリガー: 「作業履歴を作成して」（「日報を作成して」も同義）
 
 ### 共通仕様の更新
@@ -280,4 +280,4 @@ php artisan migrate
 | 2026/08/04 08:25 | Suzawa | 「日次更新まとめ（008_Update_history）の生成」を文書種類別に追加（`Daily_Update_History_Standards.md`）。 |
 | 2026/08/04 18:45 | Suzawa | 用語の調査・改称は用語集を頂点にする規則を AI向け要約・文書修正の基本ルールへ追加。 |
 | 2026/08/05 11:33 | Suzawa | AI モデルのデフォルト（Grok 4.5 High）と `Guideline_Cursor.md` への参照を文書作成の基本ルールへ追加。 |
-| 2026/08/08 04:10 | Suzawa | 「日次更新まとめ」を「日次作業履歴（008_Work_history）」に更新。基準書を Daily_Work_History_Standards.md へ。 |
+| 2026/08/08 04:12 | Suzawa | 「日次作業履歴（008_Work_history）の生成」へ更新。基準書を `Daily_Work_History_Standards.md` へ。 |
