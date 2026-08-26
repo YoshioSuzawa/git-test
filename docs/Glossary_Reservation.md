@@ -6,7 +6,7 @@
 - **システム名**: 診療予約システム、診療管理システム ／ Hệ thống đặt lịch khám、Hệ thống quản lý khám
 
 
-> **欠番**: No.12〜14 は未使用（意図的欠番）。仕様未確定は No.101（BOOKMA）および No.110 を参照。
+> **欠番**: No.12〜14 は未使用（意図的欠番）。仕様未確定のマーカーは No.110 を参照。
 
 ## 1. 組織・病院 ／ Tổ chức・bệnh viện
 
@@ -192,10 +192,10 @@
 | 95  | 入力内容確認 Xác nhận nội dung nhập        | にゅうりょうないようかくにん  | Input Confirmation         | 代理予約の確定前確認画面（M1010） Màn hình xác nhận trước khi chốt đặt lịch hộ（M1010）                                                                                                                                                                            |
 | 96  | 診療日設定 Cài đặt ngày khám              | しんりょうびせってい      | Clinic Days Setting        | 担当医別の診療日追加／削除画面（M9100） Màn hình thêm／xóa ngày khám theo bác sĩ（M9100）                                                                                                                                                                              |
 | 97  | 診療時間設定 Cài đặt giờ khám              | しんりょうじかんせってい    | Clinic Times Setting       | 対象日の20分枠ごとの診療／休診設定画面（M9200） Màn hình cài đặt khám／nghỉ theo khung 20 phút trong ngày（M9200）                                                                                                                                                        |
-| 98  | 各種設定 Các cài đặt                     | かくしゅせってい        | Settings                   | 病院メール・BOOKMAメッセージ設定画面（M9000。旧画面では店舗メール） Màn hình cài email bệnh viện・tin nhắn BOOKMA（M9000. Màn hình cũ: email cửa hàng）                                                                                                                           |
+| 98  | 各種設定 Các cài đặt                     | かくしゅせってい        | Settings                   | 病院メール設定画面（M9000。旧画面では店舗メール）。旧BOOKMAメッセージ設定は含まない（No.101【使用しない】）。 Màn hình cài email bệnh viện（M9000. Màn hình cũ: email cửa hàng）. Không gồm cài tin nhắn BOOKMA cũ (No.101【không dùng】).                                                                                                                           |
 | 99  | Vue予約SPA Vue SPA đặt lịch            | びゅーよやくえすぴーえー    | Vue Reservation SPA        | 診療予約システムのフロントエンド実装方式（Vue.js）。診療管理システムはVueではない。 Cách triển khai frontend hệ thống đặt lịch khám（Vue.js）. Hệ thống quản lý khám không dùng Vue.                                                                                                      |
 | 100 | 予約専用ダイヤル Đường dây đặt lịch          | よやくせんようだいある     | Reservation Hotline        | 来院遅延・予約に関する連絡用フリーダイヤル（0120-121296）。**本ダイヤルおよび本部電話での新規予約受付は廃止**。病院直電による代理予約（No.51）は別。 Số miễn phí liên hệ trễ giờ／đặt lịch (0120-121296). **Không nhận đặt lịch mới qua số này／hội sở**. Đặt hộ khi gọi thẳng bệnh viện (No.51) là việc khác.                                                                                                      |
-| 101 | BOOKMA BOOKMA                        | ぶっくま            | BOOKMA                     | 顧客向けアプリ／通知サービス。M9000でメッセージ設定 [要確認] Ứng dụng／dịch vụ thông báo cho khách. Cài tin nhắn ở M9000 [cần xác nhận]                                                                                                                                       |
+| 101 | BOOKMA【使用しない】 BOOKMA (không dùng) | ぶっくま            | BOOKMA (not used)          | 【使用しない】広告宣伝用の設定。旧M9000のメッセージ設定対象。**今後は使用しない**。 【Không dùng】Cài đặt quảng cáo／truyền thông. Đối tượng cài tin nhắn ở M9000 cũ. **Không dùng từ nay**.                                                                                                                                       |
 | 102 | 病院メールアドレス Email bệnh viện            | びょういんめーるあどれす    | Hospital Email Address     | 予約・問い合わせ受信用の病院メール（M9000）。旧画面表記は「店舗メールアドレス」 Email bệnh viện nhận đặt lịch・liên hệ（M9000）. Màn hình cũ:「email cửa hàng」                                                                                                                              |
 | 103 | 通知送信ログ Log gửi thông báo             | つうちそうりんろぐ       | Notification Log           | 予約完了等のメール／SMS送信記録。新システムでは予約完了の通知メール／SMSは送らない。 Ghi nhận gửi email／SMS. Hệ thống mới không gửi thông báo hoàn tất đặt lịch.                                                                                                                          |
 | 114 | 設定フッター Footer cài đặt                | せっていふったー        | Settings Footer            | 予約モーダル下部に固定する設定メニュー。お客様情報登録／ログイン設定／ペット登録／予約履歴／個人情報保護法確認等。不足時はアイコンに赤丸。 Menu cài đặt cố định dưới modal đặt lịch. Đăng ký thông tin khách／cài đặt đăng nhập／thú／lịch sử／chính sách bảo mật. Chấm đỏ khi thiếu.                                       |
@@ -302,4 +302,5 @@
 | 2026/08/25 15:20 | Phước | Bổ sung tiếng Việt còn thiếu: tiêu đề／heading mục; No.29／30 tài khoản hội sở・bệnh viện; hoàn thiện VN No.24／63／66／69／74／152／162〜169 (sửa lỗi chữ Hangul; thống nhất thuật ngữ phân loại xử lý). |
 | 2026/08/26 02:00 | Suzawa | 精査反映: No.52 病院選択に修正。No.72 アクセス可能病院（No.131）に統一。No.51／100 の電話新規予約境界を明記。No.11「本部拠点」→「所属本部」。No.24／25・130・27 の説明整合。No.63／162 英語を Slot Reserved／Status Reserved に分離。No.155／156 を§2（社員・権限）へ移動し例示「会計社員」に修正。更新履歴の Cursor 表記を Suzawa に統一、08/10 時系列と 08/24 文言を修正。No.57／68／70／101 の要確認は据え置き。 |
 | 2026/08/26 02:15 | Suzawa | No.57／68／70 を確定反映。枠数は時刻×獣医師から自由選択・ペット数無関係。削除は病院社員の論理削除のみ（顧客はキャンセルのみ）。次回予約はカルテ起点の診療予約、ワクチンは次回接種の年月登録（1ペット×予防接種種別＝1件）。No.67 をキャンセル定義に整合。 |
+| 2026/08/26 02:20 | Suzawa | No.101 BOOKMA を【使用しない】に確定（広告宣伝用設定。今後不使用）。No.98 各種設定から BOOKMA メッセージ設定を除外。 |
 
